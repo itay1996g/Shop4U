@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Shop4U.Models.Branches>
+
+@{
+    ViewData["Title"] = "ניהול סניפים";
+}
+
+
+    <div align="right" dir="rtl">
+        <h1>ניהול סניפים</h1>
+        </br>
+
+        <form asp-controller="Branches" asp-action="Index">
+
+            <h6>חיפוש</h6>
+
+            <p>
+                שם הסניף: <input type="text" name="SearchString">
+                כתובת: <input type="text" name="AddressString">
+                מנהל הסניף: <input type="text" name="branch_ownerString">
+
+                <input type="submit" value="חפש" />
+            </p>
+        </form>
+        <p>
+            <a asp-action="Create">צור סניף חדש</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        שם הסניף
+                    </th>
+                    <th>
+                       עיר הסניף
+                    </th>                    <th>
+                       מנהל הסניף
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.branch_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.branch_address)
+                        </td>                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item. branch_owner)
+                        </td>
+              
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.branch_Id">ערוך</a> |
+                            <a asp-action="Details" asp-route-id="@item.branch_Id">פרטים</a> |
+                            <a asp-action="Delete" asp-route-id="@item.branch_Id">מחק</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

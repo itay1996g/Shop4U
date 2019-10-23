@@ -1,0 +1,80 @@
+﻿@model Shop4U.Models.Branches
+
+@{
+    ViewData["Title"] = "מחיקת סניף";
+}
+
+
+
+<div align="right" dir="rtl">
+
+    <h3>האם אתה בטוח שברצונך למחוק סניף זה?</h3>
+    <div>
+        <hr />
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                שם הסניף
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.branch_name)
+            </dd>
+        </dl>
+
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                כתובת הסניף
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.branch_address)
+            </dd>
+        </dl>
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                מנהל הסניף
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.branch_owner)
+            </dd>
+        </dl>
+
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                קו רוחב
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.branch_lat)
+            </dd>
+        </dl>
+
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                קו אורך
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.branch_lng)
+            </dd>
+        </dl>
+
+
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="branch_Id" />
+            <input type="submit" value="מחק" class="btn btn-danger" /> |
+            <a asp-action="Index">חזרה לתצוגת סניפים</a>
+        </form>
+    </div>
+</div>

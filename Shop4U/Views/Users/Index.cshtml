@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Shop4U.Models.Users>
+
+@{
+    ViewData["Title"] = "ניהול משתמשים";
+}
+
+
+    <div align="right" dir="rtl">
+        <h1>ניהול משתמשים</h1>
+        </br>
+
+        <form asp-controller="Users" asp-action="Index">
+
+            <h6>חיפוש</h6>
+
+            <p>
+                כתובת מייל: <input type="text" name="EmaileString">
+                שם מלא: <input type="text" name="FullnameString">
+                תפקיד: <input type="text" name="RoleString">
+
+                <input type="submit" value="חפש" />
+            </p>
+        </form>
+        <p>
+            <a asp-action="Create">צור משתמש חדש</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        כתובת מייל
+                    </th>
+                    <th>
+                        שם מלא
+                    </th>
+                    <th>
+                        סיסמא
+                    </th>
+                    <th>
+                        נייד
+                    </th>
+                    <th>
+                        עיר מגורים
+                    </th>                   
+                    <th>
+                       מין
+                    </th>                    
+                    <th>
+                       שנת לידה
+                    </th>
+                    <th>
+                        תפקיד
+                    </th>
+                    <th>
+                        תאריך יצירה
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_fullname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_city)
+                        </td>                     <td>
+                            @Html.DisplayFor(modelItem => item.user_gender)
+                        </td>  
+                        <td>
+                            @Html.DisplayFor(modelItem => item.birth_year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.UID">ערוך</a> |
+                            <a asp-action="Details" asp-route-id="@item.UID">פרטים</a> |
+                            <a asp-action="Delete" asp-route-id="@item.UID">מחק</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

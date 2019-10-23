@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Shop4U.Models.Products>
+@using Microsoft.AspNetCore.Http
+
+
+@{
+    ViewData["Title"] = "גלריית מוצרים זמינים";
+}
+
+
+<div align="right" dir="rtl">
+    <h1>גלריית מוצרים זמינים</h1>
+    </br>
+
+    <form asp-controller="ProductsSearch" asp-action="Index">
+
+
+        @if (@Context.Session.GetString("Role") != null)
+        {
+        <h6>קטגוריה שיכולה לעניין אותך   
+
+                        @Context.Session.GetString("ML_Category")
+        </h6>
+
+        }
+
+
+        <h6>חיפוש מוצר</h6>
+
+
+        <p>
+            קטגוריה :
+            @Html.DropDownList("product_category",
+new SelectList(Enum.GetValues(typeof(Categories))),
+"בחר קטגוריה",
+new { })
+
+
+            תיאור: <input type="text" name="DescriptionString">
+            צבע: <input type="text" name="ColorString">
+
+            <input type="submit" value="חפש" />
+        </p>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    סניף
+                </th>            
+                <th>
+                    שם המוצר
+                </th>
+                <th>
+                    תיאור המוצר
+                </th>
+                <th>
+                    קטגוריה
+                </th>
+                <th>
+                    צבע
+                </th>
+                <th>
+                    תמונה
+                </th>
+                <th>
+                    תאריך יצירה
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_branch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_color)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.product_image)" height=150 width=150 />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+
+                <td>
+                    @if (@Context.Session.GetString("Role") != null)
+                    {
+                        <a asp-action="Claim" asp-route-id="@item.product_Id">אסוף מוצר </a>
+                        <var>|</var>
+
+                    }
+                    <a asp-action="Details" asp-route-id="@item.product_Id">פרטים</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

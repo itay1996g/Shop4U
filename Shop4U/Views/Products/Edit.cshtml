@@ -1,0 +1,117 @@
+﻿@model Shop4U.Models.Products
+
+@{
+    ViewData["Title"] = "עריכת מוצר";
+}
+
+
+
+
+<h1 align="center">עריכת מוצר</h1>
+
+<hr />
+<div class="row" align="right" dir="rtl">
+    <div class="col-md-4">
+        <form asp-action="Edit" class="form-signin" onsubmit="return CheckTaken();">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="product_Id" />
+            <input type="hidden" asp-for="product_image" />
+            <input type="hidden" asp-for="UID" />
+
+
+
+
+            <div class="form-group">
+                <label asp-for="product_branch" class="control-label">סניף בו נמצא המוצר</label>
+                <input asp-for="product_branch" class="form-control" />
+                <span asp-validation-for="product_branch" class="text-danger"></span>
+
+            </div>            <div class="form-group">
+                <label asp-for="product_name" class="control-label">שם המוצר</label>
+                <input asp-for="product_name" class="form-control" />
+                <span asp-validation-for="product_name" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="product_description" class="control-label">תיאור המוצר</label>
+                <input asp-for="product_description" class="form-control" />
+                <span asp-validation-for="product_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_category" class="control-label">קטגוריה</label>
+                <input asp-for="product_category" class="form-control" type="text" />
+                <span asp-validation-for="product_category" class="text-danger"></span>
+
+            </div>
+
+
+
+            <div class="form-group" dir="rtl">
+                <label asp-for="product_category" class="control-label">קטגוריה</label>
+
+                @Html.DropDownList("product_category",
+                new SelectList(Enum.GetValues(typeof(Categories))),
+                "בחר קטגוריה",
+                new { @class = "form-control" })
+
+
+                <span asp-validation-for="product_category" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="product_color" class="control-label">צבע</label>
+                <input asp-for="product_color" class="form-control" />
+                <span asp-validation-for="product_color" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Taken" class="control-label">האם נמכר</label>
+                @Html.EditorFor(model => model.Taken)
+                <span asp-validation-for="Taken" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="buyer_name" class="control-label">שם הקונה</label>
+                <input asp-for="buyer_name" class="form-control" />
+                <span asp-validation-for="buyer_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TakenDate" class="control-label">תאריך קנייה</label>
+                <input asp-for="TakenDate" class="form-control" />
+                <span asp-validation-for="TakenDate" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+
+
+                <img src="@ViewData["product_image"]" height=150 width=150 />
+
+            </div>
+
+
+
+
+
+
+            <input type="hidden" asp-for="ReleaseDate" />
+
+            <div class="form-group">
+                <input type="submit" value="עדכן פרטים" class="btn btn-primary" />
+            </div>
+            <a asp-action="Index">חזרה לתצוגת מוצרים</a>
+
+        </form>
+
+    </div>
+</div>
+
+
+<script src=@Url.Content("~/Scripts/Products/display.js")></script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

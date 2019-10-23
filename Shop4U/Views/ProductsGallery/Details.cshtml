@@ -1,0 +1,109 @@
+﻿@model Shop4U.Models.Products
+@using Microsoft.AspNetCore.Http
+
+
+@{
+    ViewData["Title"] = "פרטי מוצר";
+}
+
+<h1 align="center">פרטי מוצר</h1>
+
+<div align="right" dir="rtl">
+    <hr />
+
+    <dl class="row">
+
+
+        <dt class="col-sm-2">
+            זמין בסניף
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.product_branch)
+        </dd>
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            שם המוצר
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+    </dl>
+
+
+    <dl class="row">
+
+
+        <dt class="col-sm-2">
+            תיאור המוצר
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.product_description)
+        </dd>
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            קטגוריה
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.product_category)
+        </dd>
+
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            צבע המוצר
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.product_color)
+        </dd>
+
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            נוצר בתאריך
+
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+    </dl>
+
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            תמונה
+        </dt>
+        <dd class="col-sm-6">
+
+
+
+            <img src="@ViewData["product_image"]" height=150 width=150 />
+
+
+        </dd>
+    </dl>
+
+
+
+</div>
+<div align="right" style="font-weight:700;">
+    @if (@Context.Session.GetString("Role") != null)
+    {
+        <a asp-action="Claim" asp-route-id="@Model.product_Id">אסוף מוצר </a>
+        <var>|</var>
+
+    }
+
+    <a asp-action="Index">חזרה לתצוגת מוצרים</a>
+</div>
+

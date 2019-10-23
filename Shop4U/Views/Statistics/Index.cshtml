@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "סטטיסטיקה";
+}
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+
+<h1 align="center">סטטיסטיקה</h1>
+
+<div align="center" dir="rtl">
+    בחר גרף:
+    <select dir="rtl" id="myselect">
+        <!--<option value="PieChartSection_GetCountByCategory">כמות מוצרים בכל קטגוריה</option>-->
+        <option value="barChartSection_GetCountByBranch">כמות מוצרים בסניף</option>
+        <option value="barChartSection_GetCountByCityUsers">ערי הלקוחות מהן נקנה מוצר</option>
+        <option value="barChartSection_GetCountByUsersGender">הזמנות לפי מין</option>
+
+    </select>
+</div>
+
+</br>
+<div align="right">
+
+
+    <!--
+    <div id="PieChartSection_GetCountByCategory">
+        <h3>כמות מוצרים בכל קטגוריה</h3>
+    </div>--->
+
+
+    <div id="barChartSection_GetCountByBranch">
+        <h3>כמות מוצרים בסניף</h3>
+    </div>
+
+    <div id="barChartSection_GetCountByCityUsers" style="display:none;">
+        <h3>ערי הלקוחות מהן נקנה מוצר</h3>
+    </div>
+
+    <div id="barChartSection_GetCountByUsersGender" style="display:none;">
+        <h3>הזמנות לפי מין</h3>
+    </div>
+
+    <script src=@Url.Content("~/Scripts/Charts/d3.js")></script>
+    <script src=@Url.Content("~/Scripts/Charts/GetCountByCategory.js")></script>
+    <script src=@Url.Content("~/Scripts/Charts/GetCountByBranch.js")></script>
+    <script src=@Url.Content("~/Scripts/Charts/GetCountByCityUsers.js")></script>
+    <script src=@Url.Content("~/Scripts/Charts/GetCountByUsersGender.js")></script>
+
+
+</div>

@@ -1,0 +1,42 @@
+﻿@model Shop4U.Models.Users
+
+@{
+    ViewData["Title"] = "התחברות";
+}
+
+
+<section id="login_form" class="form-signin">
+
+    <form asp-action="Login">
+        <h1 class="h3 mb-3 font-weight-bolder">אנא הכנס פרטי התחברות</h1>
+        </br>
+
+
+
+        <label for="inputEmail" class="sr-only">כתובת מייל</label>
+        <input type="email" id="user_email" name="user_email" class="form-control" placeholder="כתובת מייל" required autofocus>
+        <label for="inputPassword" class="sr-only">סיסמא</label>
+        <input type="password" id="user_password" name="user_password" class="form-control" placeholder="סיסמא" required>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> זכור אותי
+            </label>
+        </div>
+     
+                <div class="text-danger font-weight-bolder" dir="rtl">
+                    @Html.ValidationMessage("CustomError")
+                </div>
+     
+
+
+        <div dir="rtl">
+            אין לך משתמש?
+            <a asp-area="" asp-controller="Home" asp-action="Register">הירשם עכשיו!</a>
+
+        </div>
+        </br>
+        <button class="btn btn-lg btn-primary btn-block font-weight-bolder" type="submit">התחבר</button>
+
+    </form>
+</section>

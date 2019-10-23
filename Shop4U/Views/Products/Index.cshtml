@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Shop4U.Models.Products>
+
+@{
+    ViewData["Title"] = "ניהול מוצרים";
+}
+
+
+    <div align="right" dir="rtl">
+        <h1>ניהול מוצרים</h1>
+        </br>
+
+        <form asp-controller="ProductsSearch" asp-action="Index">
+
+            <h6>חיפוש מוצר</h6>
+
+            <p>
+                קטגוריה :
+
+                @Html.DropDownList("product_category",
+                new SelectList(Enum.GetValues(typeof(Categories))),
+                "בחר קטגוריה",
+                new { })
+
+
+
+                תיאור: <input type="text" name="DescriptionString">
+                צבע: <input type="text" name="ColorString">
+                סטטוס מכירה:
+                <select name="TakenString">
+                    <option value="all">הכל</option>
+                    <option value="Taken">נמכר</option>
+                    <option value="NotTaken">לא נמכר</option>
+                </select>
+
+                <input type="submit" value="חפש" />
+            </p>
+        </form>
+        <p>
+            <a asp-action="Create">צור מוצר חדש</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        סניף
+                    </th>
+                    <th>
+                        שם המוצר
+                    </th>
+                    <th>
+                        תיאור המוצר
+                    </th>
+                    <th>
+                        קטגוריה
+                    </th>
+                    <th>
+                        צבע
+                    </th>
+                    <th>
+                        האם נמכר
+                    </th>
+                    <th>
+                        תמונה
+                    </th>
+                    <th>
+                        תאריך יצירה
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_branch)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Taken)
+
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.product_image)" height=150 width=150 />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.product_Id">ערוך</a> |
+                        <a asp-action="Details" asp-route-id="@item.product_Id">פרטים</a> |
+                        <a asp-action="Delete" asp-route-id="@item.product_Id">מחק</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

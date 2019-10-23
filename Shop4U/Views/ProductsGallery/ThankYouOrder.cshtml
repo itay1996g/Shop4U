@@ -1,0 +1,73 @@
+﻿@model Shop4U.Models.Products
+
+@{
+    ViewData["Title"] = "תודה רבה המוצר נאסף";
+}
+
+
+
+<div align="right" dir="rtl">
+
+    <h3 style="color:green;font-weight:700;">תודה רבה המוצר מחכה לך בסניף</h3>
+    עלייך לבוא לקחת אותו מהסניף שבו המוצר זמין.
+    <div>
+        <hr />
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                זמין בסניף
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_branch)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                שם המוצר
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_name)
+            </dd>
+        </dl>
+
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                תיאור המוצר
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_description)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                תמונה
+            </dt>
+            <dd class="col-sm-6">
+
+
+
+                <img src="@ViewData["product_image"]" height=150 width=150 />
+
+
+            </dd>
+        </dl>
+
+
+
+
+        <form asp-action="ThankYouOrder">
+            <input type="hidden" asp-for="product_Id" />
+            <input type="submit" value="ביטול הזמנה" class="btn btn-danger" /> |
+            <a asp-action="Index">חזרה לתצוגת מוצרים</a>
+        </form>
+    </div>
+</div>

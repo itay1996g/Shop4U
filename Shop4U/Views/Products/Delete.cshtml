@@ -1,0 +1,86 @@
+﻿@model Shop4U.Models.Products
+
+@{
+    ViewData["Title"] = "מחיקת מוצר";
+}
+
+
+
+<div align="right" dir="rtl">
+
+    <h3>האם אתה בטוח שברצונך למחוק מוצר זה?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                זמין בסניף
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_branch)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                שם המוצר
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_name)
+            </dd>
+        </dl>
+
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                תיאור המוצר
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_description)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                קטגוריה
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.product_category)
+            </dd>
+
+        </dl>       
+        
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                האם נמכר
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Taken)
+            </dd>
+
+        </dl>
+
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                נוצר בתאריך
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.ReleaseDate)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="product_Id" />
+            <input type="submit" value="מחק" class="btn btn-danger" /> |
+            <a asp-action="Index">חזרה לתצוגת מוצרים</a>
+        </form>
+    </div>
+</div>

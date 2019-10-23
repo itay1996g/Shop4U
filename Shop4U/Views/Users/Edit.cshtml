@@ -1,0 +1,89 @@
+﻿@model Shop4U.Models.Users
+
+@{
+    ViewData["Title"] = "עריכת פרטים אישיים";
+}
+
+
+
+
+<h1 align="center">עריכת פרטים</h1>
+
+<hr />
+<div class="row" align="right" dir="rtl">
+    <div class="col-md-4">
+        <form asp-action="Edit" class="form-signin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UID" />
+
+            <div class="form-group">
+                <label asp-for="user_email" class="control-label">כתובת מייל</label>
+                <input asp-for="user_email" class="form-control" />
+                <span asp-validation-for="user_email" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="user_fullname" class="control-label">שם מלא</label>
+                <input asp-for="user_fullname" class="form-control" />
+                <span asp-validation-for="user_fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_password" class="control-label">סיסמא</label>
+                <input asp-for="user_password" class="form-control" type="text" />
+                <span asp-validation-for="user_password" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="user_phone" class="control-label">נייד</label>
+                <input asp-for="user_phone" class="form-control" />
+                <span asp-validation-for="user_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_city" class="control-label">עיר מגורים</label>
+                <input asp-for="user_city" class="form-control" />
+                <span asp-validation-for="user_city" class="text-danger"></span>
+            </div>            
+            
+            <div class="form-group">
+                <label asp-for="birth_year" class="control-label">שנת לידה</label>
+                <input asp-for="birth_year" class="form-control" />
+                <span asp-validation-for="birth_year" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" dir="rtl">
+                <label asp-for="user_gender" class="control-label">מין</label>
+
+                @Html.DropDownList("user_gender",
+                new SelectList(Enum.GetValues(typeof(Gender))),
+                "בחר מין",
+                new { @class = "form-control" })
+
+
+                <span asp-validation-for="user_gender" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Role" class="control-label">תפקיד (User,Supplier,Admin)</label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="CreatedDate" />
+
+            <div class="form-group">
+                <input type="submit" value="עדכן פרטים" class="btn btn-primary" />
+            </div>
+            <a asp-action="Index">חזרה לתצוגת משתמשים</a>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

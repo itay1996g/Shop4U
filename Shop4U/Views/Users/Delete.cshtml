@@ -1,0 +1,85 @@
+﻿@model Shop4U.Models.Users
+
+@{
+    ViewData["Title"] = "מחיקת משתמש";
+}
+
+
+
+<div align="right" dir="rtl">
+
+    <h3>האם אתה בטוח שברצונך למחוק משתמש זה?</h3>
+    <div>
+        <hr />
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                כתובת מייל
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.user_email)
+            </dd>
+        </dl>
+
+
+        <dl class="row">
+
+
+            <dt class="col-sm-2">
+                תפקיד
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                שם מלא
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.user_fullname)
+            </dd>
+
+        </dl>
+
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                נייד
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.user_phone)
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                עיר
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.user_city)
+            </dd>
+
+        </dl>
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                נוצר בתאריך
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="UID" />
+            <input type="submit" value="מחק" class="btn btn-danger" /> |
+            <a asp-action="Index">חזרה לתצוגת משתמשים</a>
+        </form>
+    </div>
+</div>

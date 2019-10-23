@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "צור קשר";
+}
+
+<div align="center" dir="rtl" />
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+</br>
+
+<p>
+
+    <b>
+        יש לכם שאלות נוספות?
+    </b>
+    בבקשה אל תהססו ותפנו אליינו עבור כל שאלה ונענה בשמחה!
+</p>
+</div>
+
+
+
+</br>
+
+
+<div align="center" dir="rtl" id="col">
+
+    <p><b>כתובת: </b> המכללה למנהל ראשון לציון</p>
+
+    <p>
+        <b>טלפון: </b>
+
+        0524704053
+    </p>
+    <p>
+        <b>כתובת מייל: </b>
+
+        Colman@gmail.com
+    </p>
+
+
+</div>
+</br>
+
+
+
+<div align="right" dir="rtl" />
+
+<h3>מזג האוויר בסניפים שלנו</h3>
+</br>
+@Html.DropDownList("branches_list", "בחר סניף")
+</br>
+
+
+<iframe src="https://api.openweathermap.org/data/2.5/weather?q=ירושלים&units=metric&mode=html&appid=a79bd08c5d0384ebc498be5b9b3b8270" style="float: left;display:none;" id="weather_iframe" name="weather_iframe" frameborder="0"></iframe>
+
+<!--The div element for the map -->
+<div id="map" style="height: 400px;width: 100%; margin-top:20px;"></div>
+<script>
+    // Initialize and add the map
+    function initMap(data) {
+
+
+        var counter = 1;
+        var markerCity;
+        var map;
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                var city = { lat: data[key].lat, lng: data[key].lng };
+
+                if (counter == 1)
+                {
+                  map = new google.maps.Map(document.getElementById('map'), { zoom: 6, center: city});
+                }
+
+               new google.maps.Marker({ position:  city , map: map });
+
+            }  
+            counter = counter+1;
+
+            
+        }
+
+    }
+
+</script>
+
+
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src=@Url.Content("~/Scripts/weather.js")></script>
+<script src=@Url.Content("~/Scripts/GetBranches.js")></script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFA7uppdABonsr4QL8p0UtpGNIftzcbyU&callback=initMap">
+</script>
+
+
+
+</div>

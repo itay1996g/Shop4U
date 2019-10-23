@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "דף הבית";
+}
+
+
+    <section id="aside" dir="rtl" align="center">
+        <aside dir="rtl" align="center">
+            <h1>Shop4U</h1>
+            <p>ביצוע שופינג ללא אשראי.</p>
+        </aside>
+    </section>
+
+<section id="title">
+
+    <!--
+    <div class="text-center">
+        <h1 class="display-4">דף הבית</h1>
+    </div>-->
+    <div class="text-center">
+        <canvas id="myCanvas" width="150" height="50">
+        </canvas>
+
+        <script>
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+
+            ctx.font = "40px Arial";
+            // Create gradient
+            var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+            gradient.addColorStop("1.0", "black");
+            // Fill with gradient
+            ctx.fillStyle = gradient;
+            ctx.fillText("דף הבית", 0, 30);
+        </script>
+        </div>
+
+
+</section>
+
+<section id="about_us" dir="rtl">
+
+
+    <div class="text-center">
+        <p>
+            ברוכים הבאים לאתר של
+            <b>Shop4U</b>
+        </p>
+        <p>
+            באתר זה תוכלו להינות מרהיטים יד 2 בחינם.
+        </p>
+        <p>
+            אתר זה כמו גם הסניפים שלנו הפרוסים בכל הארץ ממומנים על ידי תרומות של הקהילה היהודית ברחבי העולם ובארץ.
+        </p>
+    </div>
+</section>
+
+<section id="video">
+
+    <div class="text-center">
+
+        <video width="400" controls <!--autoplay--> align="center">
+            <source src="~/video/Online Shopping Advice.mp4" type="video/mp4">
+           הדפדפן שלך אינו תומך ב HTML5.
+        </video>
+        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https://www.youtube.com/watch?v=iUMQ1NjHsqY&layout=button&size=small&mobile_iframe=true&appId=1396861977224095&width=59&height=20" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+
+    </div>
+</section>
+
+

@@ -1,0 +1,92 @@
+﻿@model Shop4U.Models.Users
+
+@{
+    ViewData["Title"] = "פרטים אישיים";
+}
+
+<h1 align="center">פרטים איישים</h1>
+
+<div align="right" dir="rtl">
+    <hr />
+
+    <dl class="row">
+
+
+        <dt class="col-sm-2">
+            כתובת מייל
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.user_email)
+        </dd>
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            שם מלא
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.user_fullname)
+        </dd>
+
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            נייד
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.user_phone)
+        </dd>
+
+    </dl>
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            עיר
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.user_city)
+        </dd>
+
+    </dl>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            שנת לידה
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.birth_year)
+        </dd>
+
+    </dl>
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            מין
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.user_gender)
+        </dd>
+
+    </dl>
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            נוצר בתאריך
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+    </dl>
+
+
+</div>
+<div align="right" style="font-weight:700;">
+    <a asp-action="PersonalDetailsEdit">
+        <input value="ערוך פרטים" class="btn btn-primary" />
+    </a>
+</div>
+
